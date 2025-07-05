@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdlib.h>
+#include <stddef.h>
 
 const long M = 1L << 48L;  // 2^48
 const long A = 25214903917;
