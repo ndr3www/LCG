@@ -15,11 +15,11 @@ int main() {
 
   const size_t N = strtol(n, NULL, 10);
 
-  long long numbers[N];
+  __int128 numbers[N];
   lcg_gen(numbers, N, SEED);
 
   for (size_t i = 0; i < N; ++i) {
-    printf("%llu ", numbers[i]);
+    printf("%lld ", (long long)numbers[i]);
   }
 
   puts("");
