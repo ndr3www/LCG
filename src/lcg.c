@@ -2,7 +2,7 @@
 
 const long M = 1L << 48L;  // 2^48
 const long A = 25214903917;
-const short C = 11;
+const long C = 11;
 
 int lcg_gen(__int128* dest, size_t n, long seed) {
   dest[0] = seed;
