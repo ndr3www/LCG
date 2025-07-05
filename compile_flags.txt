@@ -1,4 +1,2 @@
 -Wall
 -Wextra
--I
-include
