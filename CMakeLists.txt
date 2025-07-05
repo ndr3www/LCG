@@ -8,6 +8,6 @@ set(CMAKE_C_FLAGS_RELEASE_INIT "-Wall -Wextra")
 
 project(lcg VERSION 0.1.0 LANGUAGES C)
 
-add_executable(${PROJECT_NAME} src/main.c src/lcg.c)
+add_executable(${PROJECT_NAME} src/main.c)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_link_libraries(${PROJECT_NAME})
