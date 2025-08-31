@@ -2,4 +2,4 @@
 
 #include <stddef.h>
 
-void lcg_gen(__int128* dest, size_t n, long seed);
+void lcg_gen(_BitInt(128)* dest, size_t n, long seed);
