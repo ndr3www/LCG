@@ -32,7 +32,7 @@ SOFTWARE.
 #define LCG_RAND_MAX (LCG_CONST_M - 1)
 
 // Core formula of the linear congruential generator
-_BitInt(128) lcg_gen(_BitInt(128) number);
+unsigned _BitInt(128) lcg_gen(unsigned _BitInt(128) number);
 
 // Generates a pseudorandom series of integers of size n in the range [min, max)
 // and stores the results in the dest array
