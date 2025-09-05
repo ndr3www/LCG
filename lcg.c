@@ -4,7 +4,7 @@ _BitInt(128) lcg_gen(_BitInt(128) number) {
   return (number * LCG_CONST_A + LCG_CONST_C) % LCG_CONST_M;
 }
 
-void lcg_randi(int* dest, size_t n, long seed, long min, long max) {
+void lcg_randi(int* dest, size_t n, long seed, int min, int max) {
   _BitInt(128) numbers[n];
   numbers[0] = lcg_gen(seed);
 

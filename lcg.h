@@ -8,5 +8,5 @@
 #define LCG_RAND_MAX (LCG_CONST_M - 1)
 
 _BitInt(128) lcg_gen(_BitInt(128) number);
-void lcg_randi(int* dest, size_t n, long seed, long min, long max);
+void lcg_randi(int* dest, size_t n, long seed, int min, int max);
 void lcg_randf(float* dest, size_t n, long seed, float min, float max);
