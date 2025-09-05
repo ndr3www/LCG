@@ -29,6 +29,8 @@ _BitInt(128) lcg_gen(_BitInt(128) number) {
 }
 
 void lcg_randi(int* dest, size_t n, long seed, int min, int max) {
+  seed = (seed < 0) ? -seed : ((seed >= LCG_CONST_M) ? LCG_RAND_MAX : seed);
+
   _BitInt(128) numbers[n];
   numbers[0] = lcg_gen(seed);
   dest[0] = min + numbers[0] / (LCG_RAND_MAX / (max - min));
@@ -40,6 +42,8 @@ void lcg_randi(int* dest, size_t n, long seed, int min, int max) {
 }
 
 void lcg_randf(float* dest, size_t n, long seed, float min, float max) {
+  seed = (seed < 0) ? -seed : ((seed >= LCG_CONST_M) ? LCG_RAND_MAX : seed);
+  
   _BitInt(128) numbers[n];
   numbers[0] = lcg_gen(seed);
   dest[0] = min + (float)numbers[0] / ((float)LCG_RAND_MAX / (max - min));
