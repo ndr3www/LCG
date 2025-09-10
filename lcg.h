@@ -35,9 +35,9 @@ SOFTWARE.
 unsigned _BitInt(128) lcg_gen(unsigned _BitInt(128) number);
 
 // Generates a pseudorandom series of integers of size n in the range [min, max)
-// and stores the results in the dest array
-void lcg_randi(int* dest, size_t n, long seed, int min, int max);
+// and stores the results in the dest array, returns 0 on success and -1 on failure
+int lcg_randi(int* dest, size_t n, long seed, int min, int max);
 
 // Generates a pseudorandom series of floating-point numbers of size n in the range (min, max)
-// and stores the results in the dest array
-void lcg_randf(float* dest, size_t n, long seed, float min, float max);
+// and stores the results in the dest array, returns 0 on success and -1 on failure
+int lcg_randf(float* dest, size_t n, long seed, float min, float max);

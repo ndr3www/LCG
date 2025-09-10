@@ -22,16 +22,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#include <stdlib.h>
+
 #include "lcg.h"
 
 unsigned _BitInt(128) lcg_gen(unsigned _BitInt(128) number) {
   return (number * LCG_CONST_A + LCG_CONST_C) % LCG_CONST_M;
 }
 
-void lcg_randi(int* dest, size_t n, long seed, int min, int max) {
+int lcg_randi(int* dest, size_t n, long seed, int min, int max) {
   seed = (seed < 0) ? -seed : ((seed >= LCG_CONST_M) ? LCG_RAND_MAX : seed);
 
-  unsigned _BitInt(128) numbers[n];
+  unsigned _BitInt(128)* numbers = malloc(n * sizeof(*numbers));
+  if (numbers == NULL) {
+    return -1;
+  }
+
   numbers[0] = lcg_gen(seed);
   dest[0] = min + numbers[0] / (LCG_RAND_MAX / (max - min));
   
@@ -39,12 +45,20 @@ void lcg_randi(int* dest, size_t n, long seed, int min, int max) {
     numbers[i] = lcg_gen(numbers[i - 1]);
     dest[i] = min + numbers[i] / (LCG_RAND_MAX / (max - min));
   }
+
+  free(numbers);
+
+  return 0;
 }
 
-void lcg_randf(float* dest, size_t n, long seed, float min, float max) {
+int lcg_randf(float* dest, size_t n, long seed, float min, float max) {
   seed = (seed < 0) ? -seed : ((seed >= LCG_CONST_M) ? LCG_RAND_MAX : seed);
   
-  unsigned _BitInt(128) numbers[n];
+  unsigned _BitInt(128)* numbers = malloc(n * sizeof(*numbers));
+  if (numbers == NULL) {
+    return -1;
+  }
+
   numbers[0] = lcg_gen(seed);
   dest[0] = min + (float)numbers[0] / ((float)LCG_RAND_MAX / (max - min));
   
@@ -52,4 +66,8 @@ void lcg_randf(float* dest, size_t n, long seed, float min, float max) {
     numbers[i] = lcg_gen(numbers[i - 1]);
     dest[i] = min + (float)numbers[i] / ((float)LCG_RAND_MAX / (max - min));
   }
+
+  free(numbers);
+
+  return 0;
 }
